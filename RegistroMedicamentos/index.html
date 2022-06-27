@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registro</title>
+    <link href="styler.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <form class="form-register" id="registro" >
+
+        <h1>Registro de </h1>
+        <h1>Medicamentos</h1>
+
+        <p>Ingrese el nombre del medicamento:</p>
+        <input class="txtName" type="text" id="nombreMedicamento"><br>
+
+        <p>Ingrese el codigo del medicamento:</p>
+        <input class="txtCode" type="text" id="codigoMedicamento" ><br>
+
+        <p>Ingrese el año del medicamento:</p>
+        <input class="txtAnho" type="text" id="anhoMedicamento" ><br>
+
+        <p>Descripcion del Medicamento:</p>
+        <input class="bigInput" type="text" id="descMedicamento"><br><br>
+        
+        <input type="checkbox" id="estado"> Habilitado<br><br><br>
+
+        <div class="divBtn">
+            <button class="btn1" type="submit" id="btnLimpiar">Limpiar</button>
+            <button class="btn2" type="submit" id="btnGuardar">Guardar</button>
+        </div><br><br>
+
+
+        <div class="linea"></div>
+
+        <p>Lista de Medicamentos</p>
+
+        <ul id="list">
+
+        </ul>
+
+    </form>
+
+    <script type="text/javascript">
+        const arrMedicamentos = [];
+        const letras=/^[A-Z]+$/i;
+        document.getElementById("btnLimpiar").onclick = function () {
+            document.getElementById("nombreMedicamento").value = "";
+            document.getElementById("codigoMedicamento").value = "";
+            document.getElementById("anhoMedicamento").value = "";
+            document.getElementById("descMedicamento").value = "";
+            document.getElementById("estado").checked = false;
+            return;
+        }
+
+        document.getElementById("btnGuardar").onclick = function () {
+            event.preventDefault();
+            var nameMedicamento;
+            var codigoMedicamento;
+            var fechaMedicamento;
+            var descripcionMedicamento;
+            var estado;
+            var verificador = new Boolean(true);
+            
+            //Nombre del medicamento
+            //se verifica que no este vacio , no sea nulo y que sean solo letras
+            //tambien se podria vericar con el mismo isnan
+            if (document.getElementById('nombreMedicamento').value == '' || document.getElementById("nombreMedicamento").value == null || !/^[A-Z]+$/i.test(document.getElementById("nombreMedicamento").value)) {
+                alert("Error : Nombre");
+                verificador = new Boolean(true);
+            } else {
+                nameMedicamento = document.getElementById("nombreMedicamento").value;
+                verificador = new Boolean(false);
+            }
+
+            //Codigo del medicamento
+            //solo me falta agregar que sea el formato xxxx-xxxx
+            if (document.getElementById("codigoMedicamento").value == '' || document.getElementById("codigoMedicamento").value == null) {
+                alert("Error : Codigo");
+                verificador = new Boolean(true);
+            } else {
+                if(document.getElementById("codigoMedicamento").value.length !=9  ){
+                    alert("Ingresar el codigo Correctamente");
+                }else{
+                    codigoMedicamento = document.getElementById("codigoMedicamento").value;
+                    verificador = new Boolean(false);
+                }
+            }
+
+            //Anho del medicamento
+            if (document.getElementById("anhoMedicamento").value == '' || document.getElementById("anhoMedicamento").value == null || document.getElementById("anhoMedicamento").value.length !=4 || /^[A-Z]+$/i.test(document.getElementById("anhoMedicamento").value)) {
+                alert("Error : Anio");
+                verificador = new Boolean(true);
+            } else {
+                fechaMedicamento = document.getElementById("anhoMedicamento").value;
+                verificador = new Boolean(false);
+            }
+
+            //Descripcion del medicamento
+            if (document.getElementById("descMedicamento").value == '' || document.getElementById("descMedicamento").value == null) {
+                alert("Error : Descripcion");
+                verificador = new Boolean(true);
+            } else {
+                descripcionMedicamento = document.getElementById("descMedicamento").value;
+                verificador = new Boolean(false);
+            }
+
+            //estado del medicamento
+            if(document.getElementById('estado').checked){
+                estado = "Habilitado";
+            }else{
+                estado = "No habilitado";
+            }
+
+            if (verificador == false){
+                var li = "<p> - " + nameMedicamento + "</p>";
+                //se agrega visualmente el nombre del medicamente agregado al formulario
+                document.getElementById("list").innerHTML += li;
+                //se agrega el registro del medicamento al array
+                arrMedicamentos.push(new Array(nameMedicamento,codigoMedicamento,fechaMedicamento,descripcionMedicamento,estado));
+                alert("Registro Realizado Exitosamente!!")
+                document.getElementById("nombreMedicamento").value = "";
+                document.getElementById("codigoMedicamento").value = "";
+                document.getElementById("anhoMedicamento").value = "";
+                document.getElementById("descMedicamento").value = "";
+                document.getElementById("estado").checked = false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+*{
+    margin-left: 20px;
+}
+.form-register h1{
+    text-align: center;
+    max-width: 650px;
+    margin: auto;
+}
+
+.form-register p{
+    font-size: 20px;
+}
+
+.txtName{
+    width: 90%;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.txtCode{
+    width: 50%;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+.txtAnho{
+    width: 25%;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.bigInput{
+    width: 90%;
+    padding: 30px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 15px;
+    margin-left: 20px;
+}
+
+.linea {
+    border-top: 1px solid black;
+    height: 2px;
+    width: 90%;
+    padding: 0;
+    margin: 20px auto 0 auto;
+}
+
+.form-register button{
+        border-color: blue;
+        background-color: lightblue;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 9px;
+        display: table-row;
+        justify-content: center;
+
+}
+
+.divBtn{
+    display: flex;
+}
+.btn1{
+    margin-left: 20%;
+}
+.btn2{
+    margin-left: 40%;
+}
